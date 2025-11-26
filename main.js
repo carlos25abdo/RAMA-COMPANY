@@ -43,3 +43,22 @@ if (contactForm) {
     contactForm.reset();
   });
 }
+// ========== Lightbox لعرض صور المعرض بالحجم الكامل ==========
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+
+if (lightbox && lightboxImg) {
+  // عند الضغط على أي صورة داخل معرض الصور
+  document.querySelectorAll(".gallery-item img").forEach((img) => {
+    img.addEventListener("click", () => {
+      lightboxImg.src = img.src;
+      lightbox.style.display = "flex";
+    });
+  });
+
+  // إغلاق عند الضغط على الخلفية
+  lightbox.addEventListener("click", () => {
+    lightbox.style.display = "none";
+    lightboxImg.src = "";
+  });
+}
